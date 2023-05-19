@@ -36,11 +36,10 @@ PRIMARY KEY(matricula_patron)
 )DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE destinos(
-salida_dest				DATETIME,
-llegada_dest			DATETIME NOT NULL,
+id_puerto				INTEGER NOT NULL AUTO_INCREMENT,
 puerto_dest				VARCHAR(30),
 
-PRIMARY KEY(salida_dest, llegada_dest)
+PRIMARY KEY(id_puerto)
 )DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE barcos(
@@ -48,25 +47,26 @@ no_serie_barco			INTEGER(5) NOT NULL AUTO_INCREMENT,
 nom_barco				VARCHAR(40) NOT NULL,
 cuota					VARCHAR(5) NOT NULL,
 no_amarre				INTEGER NOT NULL,
-matricula_socio			INTEGER NOT NULL,
-matricula_patron 		INTEGER NOT NULL,
-salida_barcos			DATETIME NOT NULL,
-llegada_barcos			DATETIME NOT NULL,
 
 CONSTRAINT solo_pesos CHECK(cuota LIKE '$%'),
 
-PRIMARY KEY(no_serie_barco),
-FOREIGN KEY(matricula_socio) REFERENCES socios(matricula_socio),
-FOREIGN KEY(matricula_patron) REFERENCES patrones(matricula_patron)
+PRIMARY KEY (no_serie_barco)
 )DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE destinos_Barcos(
-no_serie_barco_d		INTEGER(5) NOT NULL,
-salida_barcos 			DATETIME NOT NULL,
-llegada_barcos			DATETIME NOT NULL,
+CREATE TABLE registros(
+no_serie_barcoREGISTROS	INTEGER NOT NULL,
+matricula_socioR		INTEGER NOT NULL,
+matricula_patronR		INTEGER NOT NULL,
+salida					DATETIME NOT NULL,
+llegada					DATETIME NOT NULL,
+id_puertoREGISTROS		INTEGER NOT NULL,
 
-FOREIGN KEY(salida_barcos, llegada_barcos) REFERENCES destinos(salida_dest, llegada_dest),
-FOREIGN KEY(no_serie_barco_d) REFERENCES barcos(no_serie_barco)
+
+FOREIGN KEY(no_serie_barcoREGISTROS) REFERENCES barcos(no_serie_barco),
+FOREIGN KEY(matricula_socioR) REFERENCES socios(matricula_socio),
+FOREIGN KEY(matricula_patronR) REFERENCES patrones(matricula_patron),
+FOREIGN KEY(id_puertoREGISTROS) REFERENCES destinos(id_puerto)
 )DEFAULT CHARACTER SET utf8;
 
-source insertClub.sql;
+
+source insertClubv2.sql;
