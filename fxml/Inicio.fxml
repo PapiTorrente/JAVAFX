@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+   <children>
+      <Label layoutX="472.0" layoutY="27.0" text="Club Náutico">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <TableView fx:id="tblTabla" layoutX="27.0" layoutY="109.0" prefHeight="264.0" prefWidth="1003.0">
+        <columns>
+          <TableColumn fx:id="clmIDSocio" prefWidth="75.0" text="ID Socio" />
+          <TableColumn fx:id="clmNombres" prefWidth="211.19996643066406" text="Nombres" />
+            <TableColumn fx:id="clmAPaterno" prefWidth="141.60000610351562" text="Apellido Paterno" />
+            <TableColumn fx:id="clmAMaterno" prefWidth="160.79995727539062" text="Apellido Materno" />
+            <TableColumn fx:id="clmDueno" prefWidth="96.79998779296875" text="Dueño" />
+            <TableColumn fx:id="clmFechaNacimiento" prefWidth="159.20001220703125" text="Fecha de Nacimiento" />
+            <TableColumn fx:id="clmNumeroCelular" prefWidth="141.5999755859375" text="Número Celular" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtPatron" layoutX="219.0" layoutY="71.0" prefHeight="25.0" prefWidth="649.0" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1044.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Abrir">
+            <items>
+              <MenuItem fx:id="mnuAbrirBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="mnuAbrirSocios" mnemonicParsing="false" onAction="#abrirSocios" text="Socios" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="mnuAbrirPatrones" mnemonicParsing="false" onAction="#abrirPatrones" text="Patrones" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuAbrirDestinos" mnemonicParsing="false" onAction="#abrirDestinos" text="Destinos" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</Pane>
