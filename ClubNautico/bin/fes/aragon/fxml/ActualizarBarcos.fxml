@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarBarcosController">
+   <children>
+      <Label layoutX="227.0" layoutY="14.0" text="Actualizar Barco">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="66.0" text="ID:" />
+      <Label layoutX="80.0" layoutY="104.0" text="Nombres:" />
+      <Label layoutX="80.0" layoutY="140.0" text="Cuota:" />
+      <Label layoutX="64.0" layoutY="183.0" text="Número de Amarre:" />
+      <Button fx:id="btnSalir" layoutX="94.0" layoutY="234.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
+      <Button fx:id="btnActualizar" layoutX="412.0" layoutY="234.0" mnemonicParsing="false" onAction="#actualizarBarcos" text="Actualizar" />
+      <TextField fx:id="txtIDBarco" disable="true" layoutX="227.0" layoutY="62.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="txtNombreBarco" layoutX="227.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="txtNumeroAmarre" layoutX="227.0" layoutY="179.0" prefHeight="25.0" prefWidth="295.0" />
+      <ChoiceBox fx:id="cmbCuota" layoutX="227.0" layoutY="136.0" prefHeight="25.0" prefWidth="295.0" />
+   </children>
+</Pane>
