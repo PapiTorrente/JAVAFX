@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="191.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InsertarDestinosController">
+   <children>
+      <Label layoutX="235.0" layoutY="37.0" text="Insertar Destino">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="104.0" text="Nombres:" />
+      <Button fx:id="btnSalir" layoutX="144.0" layoutY="154.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
+      <Button fx:id="btnInsertar" layoutX="366.0" layoutY="154.0" mnemonicParsing="false" onAction="#insertarDestino" text="Insertar" />
+      <TextField fx:id="txtDestino" layoutX="227.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
+   </children>
+</Pane>
