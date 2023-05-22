@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
    <children>
-      <Label layoutX="472.0" layoutY="27.0" text="Club Náutico">
-         <font>
-            <Font size="25.0" />
-         </font></Label>
-      <TableView fx:id="tblTabla" layoutX="27.0" layoutY="109.0" prefHeight="264.0" prefWidth="1003.0">
+      <TableView fx:id="tblTabla" layoutX="19.0" layoutY="129.0" prefHeight="284.0" prefWidth="1116.0">
         <columns>
-          <TableColumn fx:id="clmIDSocio" prefWidth="75.0" text="ID Socio" />
-          <TableColumn fx:id="clmNombres" prefWidth="211.19996643066406" text="Nombres" />
-            <TableColumn fx:id="clmAPaterno" prefWidth="141.60000610351562" text="Apellido Paterno" />
-            <TableColumn fx:id="clmAMaterno" prefWidth="160.79995727539062" text="Apellido Materno" />
-            <TableColumn fx:id="clmDueno" prefWidth="96.79998779296875" text="Dueño" />
-            <TableColumn fx:id="clmFechaNacimiento" prefWidth="159.20001220703125" text="Fecha de Nacimiento" />
-            <TableColumn fx:id="clmNumeroCelular" prefWidth="141.5999755859375" text="Número Celular" />
+            <TableColumn fx:id="clmIDBarco" prefWidth="62.400020599365234" text="ID Barco" />
+            <TableColumn fx:id="clmNombresBarco" prefWidth="131.19998168945312" text="Nombres Barco" />
+            <TableColumn fx:id="clmIDSocio" prefWidth="54.39997863769531" text="ID Socio" />
+            <TableColumn fx:id="clmNombreSocio" prefWidth="146.39996337890625" text="Nombres Socio" />
+            <TableColumn fx:id="clmIDPatron" prefWidth="64.800048828125" text="ID Patrón" />
+            <TableColumn fx:id="clmNombrePatron" prefWidth="163.199951171875" text="Nombres Patron" />
+            <TableColumn fx:id="clmSalida" prefWidth="153.60003662109375" text="Salida" />
+            <TableColumn fx:id="clmLlegada" prefWidth="135.20001220703125" text="Llegada" />
+            <TableColumn fx:id="clmIDDestino" prefWidth="84.79998779296875" text="ID Destino" />
+            <TableColumn fx:id="clmDestino" prefWidth="117.60003662109375" text="Destino" />
         </columns>
       </TableView>
-      <TextField fx:id="txtPatron" layoutX="219.0" layoutY="71.0" prefHeight="25.0" prefWidth="649.0" />
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1044.0">
+      <Label layoutX="517.0" layoutY="37.0" text="Registros">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPatron" layoutX="312.0" layoutY="80.0" prefHeight="25.0" prefWidth="531.0" />
+      <Button fx:id="btnSalir" layoutX="880.0" layoutY="422.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
+      <MenuBar layoutY="2.0" prefHeight="26.0" prefWidth="1155.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Abrir">
+          <Menu fx:id="muAbrir" mnemonicParsing="false" onAction="#abrirMas" text="Abrir">
             <items>
-              <MenuItem fx:id="mnuAbrirBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="mnuAbrirSocios" mnemonicParsing="false" onAction="#abrirSocios" text="Socios" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="mnuAbrirPatrones" mnemonicParsing="false" onAction="#abrirPatrones" text="Patrones" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuAbrirDestinos" mnemonicParsing="false" onAction="#abrirDestinos" text="Destinos" />
+              <MenuItem fx:id="muItemBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos" />
+              <MenuItem fx:id="muItemSocios" mnemonicParsing="false" onAction="#abrirSocios" text="Socios" />
+              <MenuItem fx:id="muItemPatrones" mnemonicParsing="false" onAction="#abrirPatrones" text="Patrones" />
+                  <MenuItem fx:id="muItemDestinos" mnemonicParsing="false" onAction="#abrirDestinos" text="Destinos" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
+      <Button fx:id="btnActualizar" layoutX="178.0" layoutY="422.0" mnemonicParsing="false" onAction="#actualizarRegistro" text="Actualizar" />
+      <Button fx:id="btnInsertar" layoutX="491.0" layoutY="422.0" mnemonicParsing="false" onAction="#insertarRegistro" text="Insertar" />
    </children>
 </Pane>

@@ -9,10 +9,9 @@ public class ListaDeRegistros {
 	private ObservableList<Patrones> grupoPatrones = FXCollections.observableArrayList();
 	private ObservableList<Barcos> grupoBarcos = FXCollections.observableArrayList();
 	private ObservableList<Destinos> grupoDestinos = FXCollections.observableArrayList();
-	//private ObservableList<Registros> grupoRegistros = FXCollections.observableArrayList();
+	private ObservableList<Registros> grupoRegistros = FXCollections.observableArrayList();
 	
 	public ListaDeRegistros() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ObservableList<Socios> getGrupoSocios() {
@@ -50,5 +49,12 @@ public class ListaDeRegistros {
 	public void setGrupoDestinos(ObservableList<Destinos> grupoDestinos) {
 		this.grupoDestinos = grupoDestinos;
 	}
-	
+
+	public ObservableList<Registros> getGrupoRegistros() {
+		return grupoRegistros;
+	}
+
+	public void setGrupoRegistros(ObservableList<Registros> grupoRegistros) {
+		this.grupoRegistros = grupoRegistros;
+	}
 }

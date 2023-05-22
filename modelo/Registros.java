@@ -1,18 +1,36 @@
 package fes.aragon.modelo;
 
-import java.sql.Date;
-
-public class Registros {
+public class Registros{
+	private Barcos barco;
 	private Socios socio;
-	private int matriculaSocio;
 	private Patrones patron;
-	private int matriculaPatron;
-	private Date salidaBarcos;
-	private Date llegadaBarcos;
-	
+	private Destinos destino;
+	private String fechaSalida;
+	private String fechaLlegada;
 	
 	public Registros() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Registros(char ok) {
+		this.socio = new Socios();
+		this.barco = new Barcos();
+		this.destino = new Destinos();
+		this.patron = new Patrones();
+	}
+
+
+
+	public Barcos getBarco() {
+		return barco;
+	}
+
+	public void setBarco(Barcos barco) {
+		this.barco = barco;
+	}
+	
+	public int getNoSerieBarco() {
+		return this.barco.getNoSerieBarco();
 	}
 
 	public Socios getSocio() {
@@ -22,15 +40,11 @@ public class Registros {
 	public void setSocio(Socios socio) {
 		this.socio = socio;
 	}
-	
-	public int getMatriculaSocio(){
-		return this.getSocio().getMatriculaSocio();
+
+	public int getMatriculaSocio() {
+		return this.socio.getMatriculaSocio();
 	}
 
-	public void setMatriculaSocio(int matriculaSocio) {
-		this.socio.setMatriculaSocio(matriculaSocio);
-	}
-	
 	public Patrones getPatron() {
 		return patron;
 	}
@@ -39,28 +53,36 @@ public class Registros {
 		this.patron = patron;
 	}
 	
-	public int getMatriculaPatron(){
-		return this.getPatron().getMatriculaPatron();
+	public int getMatriculaPatron() {
+		return this.patron.getMatriculaPatron();
 	}
 
-	public void setMatriculaPatron(int matriculaPatron) {
-		this.patron.setMatriculaPatron(matriculaPatron);
+	public Destinos getDestino() {
+		return destino;
 	}
 
-	public Date getSalidaBarcos() {
-		return salidaBarcos;
+	public void setDestino(Destinos destino) {
+		this.destino = destino;
+	}
+	
+	public int getPuertoDest() {
+		return this.destino.getNoSerieDestino();
+	}
+	
+	public String getFechaSalida() {
+		return fechaSalida;
 	}
 
-	public void setSalidaBarcos(Date salidaBarcos) {
-		this.salidaBarcos = salidaBarcos;
+	public void setFechaSalida(String fechaSalida) {
+		this.fechaSalida = fechaSalida;
 	}
 
-	public Date getLlegadaBarcos() {
-		return llegadaBarcos;
+	public String getFechaLlegada() {
+		return fechaLlegada;
 	}
 
-	public void setLlegadaBarcos(Date llegadaBarcos) {
-		this.llegadaBarcos = llegadaBarcos;
+	public void setFechaLlegada(String fechaLlegada) {
+		this.fechaLlegada = fechaLlegada;
 	}
 
 }
