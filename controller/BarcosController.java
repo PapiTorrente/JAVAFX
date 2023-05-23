@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import fes.aragon.modelo.Barcos;
 import fes.aragon.modelo.ListaDeRegistros;
-import fes.aragon.modelo.Socios;
 import fes.aragon.recovery.Conexion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -109,7 +108,7 @@ public class BarcosController extends BaseController implements Initializable{
 			ResultSet rs = st.executeQuery(query);
 			ListaDeRegistros.getObjeto().getGrupoBarcos().clear();
 			while(rs.next()) {
-				Barcos b = new Barcos();
+				b = new Barcos();
 				b.setNoSerieBarco(rs.getInt(1));
 				b.setNomBarco(rs.getString(2));
 				b.setCuota(rs.getString(3));

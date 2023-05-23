@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.PatronesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1044.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.PatronesController">
    <children>
       <Label layoutX="474.0" layoutY="21.0" text="Patrones">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font></Label>
       <TableView fx:id="tblTabla" layoutX="27.0" layoutY="109.0" prefHeight="200.0" prefWidth="1003.0">
         <columns>
@@ -25,10 +25,10 @@
             <TableColumn fx:id="clmNumeroCelular" prefWidth="141.5999755859375" text="Número Celular" />
         </columns>
       </TableView>
-      <Button fx:id="btnSalir" layoutX="991.0" layoutY="348.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
-      <Button fx:id="btnInsertar" layoutX="27.0" layoutY="348.0" mnemonicParsing="false" onAction="#insertarPatron" text="Insertar" />
-      <Button fx:id="btnActualizar" layoutX="95.0" layoutY="348.0" mnemonicParsing="false" onAction="#actualizarPatron" text="Actualizar" />
+      <Button fx:id="btnSalir" layoutX="991.0" layoutY="348.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #fb5f5f;" text="Salir" />
+      <Button fx:id="btnInsertar" layoutX="27.0" layoutY="348.0" mnemonicParsing="false" onAction="#insertarPatron" style="-fx-background-color: #5ccd5c;" text="Insertar" />
+      <Button fx:id="btnActualizar" layoutX="115.0" layoutY="348.0" mnemonicParsing="false" onAction="#actualizarPatron" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
       <TextField fx:id="txtPatron" layoutX="219.0" layoutY="63.0" prefHeight="25.0" prefWidth="649.0" />
-      <Button fx:id="btnEliminar" layoutX="175.0" layoutY="348.0" mnemonicParsing="false" onAction="#eliminarPatron" text="Eliminar" />
+      <Button fx:id="btnEliminar" layoutX="215.0" layoutY="348.0" mnemonicParsing="false" onAction="#eliminarPatron" style="-fx-background-color: #fb5f5f;" text="Eliminar" />
    </children>
 </Pane>

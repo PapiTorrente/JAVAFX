@@ -238,8 +238,8 @@ public class Conexion extends BaseController{
 		return datos;
 	}
 	
-	public ObservableList<Socios> buscarSocio(String patron) throws SQLException {//Devuelve la lista observable que se edito
-		String query = "select * from socios where nombres_socio like '%"+patron+"%'";
+	public ObservableList<Socios> buscarSocio(String socio) throws SQLException {//Devuelve la lista observable que se edito
+		String query = "select * from socios where nombres_socio like '%"+socio+"%'";
 		Statement st = conexion.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		ObservableList<Socios> datos = FXCollections.observableArrayList();
@@ -327,6 +327,27 @@ public class Conexion extends BaseController{
 	
 	public ObservableList<Patrones> buscarPatrones() throws SQLException {//Devuelve la lista observable que se edito
 		String query = "select * from patrones";
+		Statement st = conexion.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		ObservableList<Patrones> datos = FXCollections.observableArrayList();
+		while (rs.next()) {
+			Patrones p = new Patrones();
+			p.setMatriculaPatron(rs.getInt(1));
+			p.setNombresPatron(rs.getString(2));
+			p.setApPaternoPatron(rs.getString(3));
+			p.setApMaternoPatron(rs.getString(4));
+			p.setEsPatronDueno(rs.getBoolean(5));
+			p.setFechaNacimientoPatron(rs.getDate(6));
+			p.setNoCelularPatron(rs.getString(7));
+			datos.add(p);
+		}
+		rs.close();
+		st.close();
+		return datos;
+	}
+	
+	public ObservableList<Patrones> buscarPatrones(String patron) throws SQLException {//Devuelve la lista observable que se edito
+		String query = "select * from patrones where nombres_patron like '%"+ patron+ "%'";
 		Statement st = conexion.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		ObservableList<Patrones> datos = FXCollections.observableArrayList();

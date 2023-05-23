@@ -43,4 +43,9 @@ public class Barcos{
 		this.noAgarre = noAgarre;
 	}
 
+	@Override
+	public String toString() {
+		return nomBarco;
+	}
+
 }

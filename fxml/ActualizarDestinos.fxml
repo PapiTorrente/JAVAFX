@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarDestinosController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="600.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarDestinosController">
    <children>
-      <Label layoutX="226.0" layoutY="14.0" text="Actualizar Destino">
+      <Label layoutX="214.0" layoutY="14.0" text="Actualizar Destino">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="66.0" text="ID:" />
+      <Label layoutX="80.0" layoutY="66.0" prefHeight="17.0" prefWidth="43.0" text="ID:" />
       <Label layoutX="80.0" layoutY="104.0" text="Destino:" />
-      <Button fx:id="btnSalir" layoutX="156.0" layoutY="159.0" mnemonicParsing="false" onAction="#cerrarVentana" text="Salir" />
-      <Button fx:id="btnActualizar" layoutX="340.0" layoutY="159.0" mnemonicParsing="false" onAction="#actualizarDestinos" text="Actualizar" />
+      <Button fx:id="btnSalir" layoutX="82.0" layoutY="159.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #fb5f5f;" text="Salir" />
+      <Button fx:id="btnActualizar" layoutX="340.0" layoutY="159.0" mnemonicParsing="false" onAction="#actualizarDestinos" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
       <TextField fx:id="txtIDDestino" disable="true" layoutX="227.0" layoutY="62.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="txtNombres" layoutX="227.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
    </children>

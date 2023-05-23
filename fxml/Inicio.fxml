@@ -8,10 +8,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="1155.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InicioController">
    <children>
       <TableView fx:id="tblTabla" layoutX="19.0" layoutY="129.0" prefHeight="284.0" prefWidth="1116.0">
         <columns>
@@ -27,26 +29,69 @@
             <TableColumn fx:id="clmDestino" prefWidth="117.60003662109375" text="Destino" />
         </columns>
       </TableView>
-      <Label layoutX="517.0" layoutY="37.0" text="Registros">
+      <Label alignment="CENTER" layoutX="517.0" layoutY="29.0" prefHeight="51.0" prefWidth="127.0" text="Registros">
          <font>
-            <Font size="29.0" />
+            <Font name="System Bold" size="29.0" />
          </font>
       </Label>
       <TextField fx:id="txtPatron" layoutX="312.0" layoutY="80.0" prefHeight="25.0" prefWidth="531.0" />
-      <Button fx:id="btnSalir" layoutX="880.0" layoutY="422.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
-      <MenuBar layoutY="2.0" prefHeight="26.0" prefWidth="1155.0">
+      <Button fx:id="btnSalir" layoutX="1096.0" layoutY="422.0" mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #fb5f5f;" text="Salir" />
+      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1155.0">
         <menus>
           <Menu fx:id="muAbrir" mnemonicParsing="false" onAction="#abrirMas" text="Abrir">
             <items>
-              <MenuItem fx:id="muItemBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos" />
-              <MenuItem fx:id="muItemSocios" mnemonicParsing="false" onAction="#abrirSocios" text="Socios" />
-              <MenuItem fx:id="muItemPatrones" mnemonicParsing="false" onAction="#abrirPatrones" text="Patrones" />
-                  <MenuItem fx:id="muItemDestinos" mnemonicParsing="false" onAction="#abrirDestinos" text="Destinos" />
+              <MenuItem fx:id="muItemBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/Barco.png" />
+                           </image></ImageView>
+                     </graphic></MenuItem>
+              <MenuItem fx:id="muItemSocios" mnemonicParsing="false" onAction="#abrirSocios" text="Socios">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/Socio.png" />
+                           </image></ImageView>
+                     </graphic></MenuItem>
+              <MenuItem fx:id="muItemPatrones" mnemonicParsing="false" onAction="#abrirPatrones" text="Patrones">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/Patron.png" />
+                           </image></ImageView>
+                     </graphic></MenuItem>
+                  <MenuItem fx:id="muItemDestinos" mnemonicParsing="false" onAction="#abrirDestinos" text="Destinos">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/Destino.png" />
+                           </image></ImageView>
+                     </graphic></MenuItem>
             </items>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/Menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
           </Menu>
+            <Menu fx:id="muMas" mnemonicParsing="false" text="Más">
+               <items>
+                  <MenuItem fx:id="muItemCreditos" mnemonicParsing="false" onAction="#abrirCreditos" text="Créditos" />
+               </items>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/Mas.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnActualizar" layoutX="178.0" layoutY="422.0" mnemonicParsing="false" onAction="#actualizarRegistro" text="Actualizar" />
-      <Button fx:id="btnInsertar" layoutX="491.0" layoutY="422.0" mnemonicParsing="false" onAction="#insertarRegistro" text="Insertar" />
+      <Button fx:id="btnActualizar" layoutX="94.0" layoutY="422.0" mnemonicParsing="false" onAction="#actualizarRegistro" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
+      <Button fx:id="btnInsertar" layoutX="19.0" layoutY="422.0" mnemonicParsing="false" onAction="#insertarRegistro" style="-fx-background-color: #5ccd5c;" text="Insertar" />
    </children>
 </Pane>

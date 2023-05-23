@@ -132,5 +132,8 @@ public class DestinosController extends BaseController implements Initializable{
 		} catch (SQLException e) {
 		}
 	}
+	
+	public void eliminarDestinos() throws SQLException{
+	}
 
 }

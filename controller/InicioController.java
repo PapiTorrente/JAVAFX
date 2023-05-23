@@ -70,6 +70,12 @@ public class InicioController extends BaseController implements Initializable{
     
     @FXML
     private Menu muAbrir;
+    
+    @FXML
+    private MenuItem muItemCreditos;
+    
+    @FXML
+    private Menu muMas;
 
     @FXML
     private MenuItem muItemBarcos;
@@ -88,6 +94,7 @@ public class InicioController extends BaseController implements Initializable{
 
     @FXML
     private TextField txtPatron;
+    
 
 	@FXML
     private void actualizarRegistro(ActionEvent event) {
@@ -129,6 +136,11 @@ public class InicioController extends BaseController implements Initializable{
     @FXML
     void abrirMas(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void abrirCreditos(ActionEvent event) {
+    	
     }
 
     @FXML

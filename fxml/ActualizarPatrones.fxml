@@ -8,22 +8,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="600.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.InsertarPatronesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="600.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarPatronesController">
    <children>
-      <Label layoutX="235.0" layoutY="37.0" text="Insertar Patrón">
+      <Label layoutX="209.0" layoutY="14.0" text="Actualizar Patrones">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Label layoutX="80.0" layoutY="66.0" text="ID:" />
       <Label layoutX="80.0" layoutY="104.0" text="Nombres:" />
       <Label layoutX="80.0" layoutY="140.0" text="Apellido Paterno:" />
       <Label layoutX="80.0" layoutY="183.0" text="Apellido Materno:" />
       <Label layoutX="80.0" layoutY="222.0" text="¿Es dueño?:" />
       <Label layoutX="80.0" layoutY="265.0" text="Fecha de Nacimiento:" />
       <Label layoutX="80.0" layoutY="304.0" text="Número Celular:" />
-      <Button fx:id="btnSalir" layoutX="91.0" layoutY="373.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #fb5f5f;" text="Salir" />
-      <Button fx:id="btnInsertar" layoutX="337.0" layoutY="373.0" mnemonicParsing="false" onAction="#insertarPatrones" style="-fx-background-color: #5ccd5c;" text="Insertar" />
-      <TextField fx:id="txtNombres" layoutX="227.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
+      <Button fx:id="btnSalir" layoutX="104.0" layoutY="373.0" mnemonicParsing="false" onAction="#cerrarVentana" style="-fx-background-color: #fb5f5f;" text="Salir" />
+      <Button fx:id="btnActualizar" layoutX="341.0" layoutY="373.0" mnemonicParsing="false" onAction="#actualizarPatrones" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
+      <TextField fx:id="txtIDPatrones" layoutX="227.0" layoutY="62.0" prefHeight="25.0" prefWidth="295.0" />
+      <TextField fx:id="txtNombresPatron" layoutX="227.0" layoutY="100.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="txtNumeroCelular" layoutX="227.0" layoutY="300.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="txtAPaterno" layoutX="227.0" layoutY="136.0" prefHeight="25.0" prefWidth="295.0" />
       <TextField fx:id="txtAMaterno" layoutX="227.0" layoutY="179.0" prefHeight="25.0" prefWidth="295.0" />

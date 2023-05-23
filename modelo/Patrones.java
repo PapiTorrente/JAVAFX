@@ -71,12 +71,10 @@ public class Patrones {
 		this.noCelularPatron = noCelularPatron;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Patrones [matriculaPatron=" + matriculaPatron + ", nombresPatron=" + nombresPatron
-				+ ", apPaternoPatron=" + apPaternoPatron + ", apMaternoPatron=" + apMaternoPatron + ", esPatronDueno="
-				+ esPatronDueno + ", fechaNacimientoPatron=" + fechaNacimientoPatron + ", noCelularPatron="
-				+ noCelularPatron + "]";
+		return nombresPatron;
 	}
 	
 }

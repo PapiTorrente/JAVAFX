@@ -85,9 +85,7 @@ public class Socios {
 
 	@Override
 	public String toString() {
-		return "Socios [matriculaSocio=" + matriculaSocio + ", nombresSocios=" + nombresSocios + ", apPaternoSocio="
-				+ apPaternoSocio + ", apMaternoSocio=" + apMaternoSocio + ", esSocioDueno=" + esSocioDueno
-				+ ", fechaNacimientoSocio=" + fechaNacimientoSocio + ", noCelularSocio=" + noCelularSocio + "]";
+		return nombresSocios;
 	}
 	
 	

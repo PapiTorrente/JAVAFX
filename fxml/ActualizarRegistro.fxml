@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarRegistroController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="639.0" style="-fx-background-color: #356fa2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fes.aragon.controller.ActualizarRegistroController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="72.0" prefHeight="202.0" prefWidth="118.0" spacing="30.0">
          <children>
@@ -28,9 +29,12 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <Label layoutX="244.0" layoutY="23.0" text="Actualizar Registro" />
-      <Button fx:id="btnSalir" layoutX="149.0" layoutY="449.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
-      <Button fx:id="btnActualizar" layoutX="414.0" layoutY="449.0" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
+      <Label layoutX="233.0" layoutY="23.0" text="Actualizar Registro">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Button fx:id="btnSalir" layoutX="54.0" layoutY="449.0" mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #fb5f5f;" text="Salir" />
+      <Button fx:id="btnActualizar" layoutX="289.0" layoutY="449.0" mnemonicParsing="false" onAction="#actualizar" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
       <VBox layoutX="149.0" layoutY="53.0" prefHeight="229.0" prefWidth="414.0">
          <children>
             <ComboBox fx:id="cmbBarco" prefHeight="28.0" prefWidth="414.0">

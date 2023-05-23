@@ -25,8 +25,6 @@ public class SociosController extends BaseController implements Initializable{
 
 	private Conexion cn = conexionSQL();
 	
-	private Socios s;
-	
     @FXML
     private TableColumn<Socios, String> clmAMaterno;
 

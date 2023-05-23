@@ -142,10 +142,10 @@ public class PatronesController extends BaseController implements Initializable{
 				@Override
 				public void changed(ObservableValue<? extends Object> arg0, Object arg1, Object arg2) {
 					try {
-						ListaDeRegistros.getObjeto().setGrupoSocios(this.cn.buscarSocio(txtPatron.getText()));
+						ListaDeRegistros.getObjeto().setGrupoPatrones(this.cn.buscarPatrones(txtPatron.getText()));
 						tblTabla.setItems(ListaDeRegistros.getObjeto().getGrupoPatrones());
 						if(txtPatron.getText().equals("") || txtPatron.getText().equals(null)) {
-						cn.llenarTablaSocios();;
+						cn.llenarTablaPatrones();;
 						tblTabla.setItems(ListaDeRegistros.getObjeto().getGrupoPatrones());
 						}
 					} catch (SQLException e) {
