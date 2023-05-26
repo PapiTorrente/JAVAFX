@@ -12,6 +12,7 @@ import fes.aragon.recovery.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -40,7 +41,25 @@ public class InsertarDestinosController extends BaseController implements Initia
 
     @FXML
     void insertarDestino(ActionEvent event) {
-    	this.d.setPuertoDest(this.txtDestino.getText());
+    	if(this.txtDestino.getLength() > 2 && this.txtDestino.getLength() < 31) {
+    		this.d.setPuertoDest(this.txtDestino.getText());
+    	} else {
+    		if(this.txtDestino.getLength() <= 2) {
+    			Alert alerta=new Alert(Alert.AlertType.ERROR);
+    			alerta.setTitle("¡Cuidado!");
+    			alerta.setHeaderText("Hay un error con la inserción del dato.");
+    			alerta.setContentText("No puedes agregar este destino porque el nombre debe ser mayor a dos carácteres.");
+    			alerta.showAndWait();
+    		}
+    		if(this.txtDestino.getLength() >= 31) {
+    			Alert alerta=new Alert(Alert.AlertType.ERROR);
+    			alerta.setTitle("¡Cuidado!");
+    			alerta.setHeaderText("Hay un error con la inserción del dato.");
+    			alerta.setContentText("No puedes agregar este destino porque el nombre debe ser menor a treinta y un carácteres.");
+    			alerta.showAndWait();
+    		}
+    	}
+    	
     	try {
 			this.d.setNoSerieDestino(this.cn.insertarDestinos(this.d));
 			ListaDeRegistros.getObjeto().getGrupoDestinos().set(

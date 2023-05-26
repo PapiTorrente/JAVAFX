@@ -11,6 +11,7 @@ import fes.aragon.recovery.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -46,9 +47,25 @@ public class InsertarBarcosController extends BaseController implements Initiali
 
     @FXML
     void insertarBarco(ActionEvent event) {
-    	this.b.setNomBarco(this.txtNombresDeBarco.getText());
-    	this.b.setCuota(this.cmbCuota.getValue());
-    	this.b.setNoAgarre(Integer.parseInt(this.txtNumeroAmarre.getText()));
+    	if(this.txtNombresDeBarco.getLength() > 2 && this.txtNombresDeBarco.getLength() < 41) {
+        	this.b.setNomBarco(this.txtNombresDeBarco.getText());
+    	} else {
+    		if(this.txtNombresDeBarco.getLength() <= 2) {
+    			Alert alerta=new Alert(Alert.AlertType.ERROR);
+    			alerta.setTitle("¡Cuidado!");
+    			alerta.setHeaderText("Hay un error con la inserción del dato.");
+    			alerta.setContentText("No puedes nombrar así el barco porque el nombre debe ser mayor a dos carácteres.");
+    			alerta.showAndWait();
+    		}
+    		if(this.txtNombresDeBarco.getLength() >= 41) {
+    			Alert alerta=new Alert(Alert.AlertType.ERROR);
+    			alerta.setTitle("¡Cuidado!");
+    			alerta.setHeaderText("Hay un error con la inserción del dato.");
+    			alerta.setContentText("No puedes nombrar así el barco porque el nombre debe ser menor a cuarenta y un carácteres.");
+    			alerta.showAndWait();
+    		}
+    	}
+    	
     	try {
 			this.b.setNoSerieBarco(this.cn.insertarBarcos(this.b));
 			ListaDeRegistros.getObjeto().getGrupoBarcos().set(
