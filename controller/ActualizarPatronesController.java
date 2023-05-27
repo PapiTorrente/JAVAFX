@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import fes.aragon.modelo.ListaDeRegistros;
 import fes.aragon.modelo.Patrones;
 import fes.aragon.modelo.Socios;
+import fes.aragon.modelo.TipoError;
 import fes.aragon.recovery.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,8 @@ public class ActualizarPatronesController extends BaseController implements Init
 	
 	private Date d;
 	
+	String mensaje = "";
+	
     @FXML
     private Button btnActualizar;
 
@@ -33,7 +36,7 @@ public class ActualizarPatronesController extends BaseController implements Init
     private Button btnSalir;
 
     @FXML
-    private ChoiceBox<Boolean> cmbEsDueno;
+    private ChoiceBox<String> cmbEsDueno;
 
     @FXML
     private DatePicker dtpFechaNacimiento;
@@ -55,6 +58,7 @@ public class ActualizarPatronesController extends BaseController implements Init
 
     @FXML
     void actualizarPatrones(ActionEvent event) throws SQLException {
+    	if(this.verificar()) {
     	this.actualizarPatron();
     	ListaDeRegistros.getObjeto().getGrupoPatrones().set(this.indice, this.p);
     	this.cn.llenarTablaRegistros();
@@ -62,7 +66,15 @@ public class ActualizarPatronesController extends BaseController implements Init
     	this.cerrarVentana(this.btnActualizar);
     	this.tabla = null;
     	this.indice = -1;
+    	this.telefonoValido = true;
+    	this.nombreValido = true;
+    	this.aPaternoValido = true;
+    	this.aMaternoValido = true;
     	this.cn.cerrarConexion();
+    	}else {
+    		this.ventanaEmergente("Error", "Error de guardado", this.mensaje);
+    		this.mensaje = "";
+    	}
     }
 
     @FXML
@@ -70,6 +82,10 @@ public class ActualizarPatronesController extends BaseController implements Init
     	this.cerrarVentana(btnSalir);
     	this.tabla = null;
     	this.indice = -1;
+    	this.telefonoValido = true;
+    	this.nombreValido = true;
+    	this.aPaternoValido = true;
+    	this.aMaternoValido = true;
     	this.cn.cerrarConexion();
     }
     
@@ -91,14 +107,112 @@ public class ActualizarPatronesController extends BaseController implements Init
 		this.p = ListaDeRegistros.getObjeto().getGrupoPatrones().get(indice);
 		d = this.p.getFechaNacimientoPatron();
 		this.txtIDPatrones.setDisable(true);
-		this.cmbEsDueno.getItems().addAll(true,false);
+		this.cmbEsDueno.getItems().addAll("Selecciona una opción:", "true", "false");
 		this.txtNombresPatron.setText(this.p.getNombresPatron());
 		this.txtAPaterno.setText(this.p.getApPaternoPatron());
 		this.txtAMaterno.setText(this.p.getApMaternoPatron());
 		this.txtIDPatrones.setText(String.valueOf(this.p.getMatriculaPatron()));
 		this.txtNumeroCelular.setText(this.p.getNoCelularPatron());
-		this.cmbEsDueno.setValue(this.p.isEsPatronDueno());
+		this.cmbEsDueno.setValue(String.valueOf(this.p.isEsPatronDueno()));
 		this.dtpFechaNacimiento.setValue(this.d.toLocalDate());
+		this.verificarEntrada(txtNumeroCelular, TipoError.TELEFONO);
+		this.verificarEntrada(txtNombresPatron, TipoError.NOMBRE);
+		this.verificarEntrada(txtAPaterno, TipoError.APELLIDOPATERNO);
+		this.verificarEntrada(txtAMaterno, TipoError.APELLIDOMATERNO);
+	}
+	
+	private boolean verificar() {
+		boolean valido = true;
+
+		if ((this.txtNombresPatron.getText() == null)
+				|| (this.txtNombresPatron.getText() != null && this.txtNombresPatron.getText().isEmpty())) {
+			this.mensaje += "- El nombre no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if (this.txtNombresPatron.getText().length() <= 3) {
+			this.mensaje += "- El nombre no es valido, debe \n tener al menos cuatro caracteres.\n";
+			valido = false;
+		}
+		
+		if (this.txtNombresPatron.getText().length() > 40) {
+			this.mensaje += "- El nombre no es valido, debe tener máximo 40 caracteres.\n";
+			valido = false;
+		}
+		
+		if (!this.nombreValido) {
+			this.mensaje += "- El nombre del patrón solo debe contener letras.\n";
+			valido = false;
+		}
+		
+		if ((this.txtAPaterno.getText() == null)
+				|| (this.txtAPaterno.getText() != null && this.txtAPaterno.getText().isEmpty())) {
+			this.mensaje += "- El apellido paterno no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if (this.txtAPaterno.getText().length() <= 2) {
+			this.mensaje += "- El apellido paterno no es valido, debe \n tener al menos tres caracteres.\n";
+			valido = false;
+		}
+		
+		if (this.txtAPaterno.getText().length() > 20) {
+			this.mensaje += "- El apellido paterno no es valido, debe \n tener máximo 20 caracteres.\n";
+			valido = false;
+		}
+		
+		if (!this.aPaternoValido) {
+			this.mensaje += "- El apellido paterno del socio solo debe contener letras.\n";
+			valido = false;
+		}
+		
+		if ((this.txtAMaterno.getText() == null)
+				|| (this.txtAMaterno.getText() != null && this.txtAMaterno.getText().isEmpty())) {
+			this.mensaje += "- El apellido materno no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if (this.txtAMaterno.getText().length() <= 2) {
+			this.mensaje += "- El apellido materno no es valido, debe \n tener al menos tres caracteres.\n";
+			valido = false;
+		}
+		
+		if (this.txtAMaterno.getText().length() <= 2) {
+			this.mensaje += "- El apellido materno no es valido, debe \n tener al menos tres caracteres.\n";
+			valido = false;
+		}
+		
+		if (!this.aMaternoValido) {
+			this.mensaje += "- El apellido materno del patrón solo debe contener letras.\n";
+			valido = false;
+		}
+		
+		if((this.cmbEsDueno.getSelectionModel().getSelectedIndex() == 0) || 
+				(this.cmbEsDueno.getSelectionModel().getSelectedIndex() == -1)) {
+			this.mensaje += "- Seleccione una opción sobre el dueño del barco.\n";
+			valido = false;
+		}
+		
+		if ((this.dtpFechaNacimiento.getValue() == null)
+				|| (this.dtpFechaNacimiento.getValue() != null && 
+				String.valueOf(this.dtpFechaNacimiento.getValue()).equals(""))) {
+			this.mensaje += "- La fecha de nacimiento no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if ((this.txtNumeroCelular.getText() == null)
+				|| (this.txtNumeroCelular.getText() != null && this.txtNumeroCelular.getText().isEmpty())) {
+			this.mensaje += "- El número celular no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+
+		if (!this.telefonoValido) {
+			this.mensaje += "- El número celuar del patrón debe contener diez dígitos.\n";
+			valido = false;
+		}
+		
+		return valido;
 	}
 	
 	public void actualizarPatron() throws SQLException {
@@ -142,19 +256,18 @@ public class ActualizarPatronesController extends BaseController implements Init
 			aMaternoBandera = true;
 		}
 		
-		if(Boolean.compare(p.isEsPatronDueno(), this.cmbEsDueno.getValue()) < 0 
-				|| Boolean.compare(p.isEsPatronDueno(), this.cmbEsDueno.getValue()) >0) {
+		if(!(this.cmbEsDueno.getValue().equals(String.valueOf(this.p.isEsPatronDueno()))) ||
+				!(this.cmbEsDueno.getSelectionModel().getSelectedIndex() == 0) || 
+				!(this.cmbEsDueno.getSelectionModel().getSelectedIndex() == -1)) {
 			if(nombreBandera | aPaternoBandera | aMaternoBandera) {
 				queryUno += ",";
 			}
 			queryUno = queryUno + esDueno + "=" + this.cmbEsDueno.getValue();
-			this.p.setEsPatronDueno(this.cmbEsDueno.getValue());
+			this.p.setEsPatronDueno(Boolean.valueOf(this.cmbEsDueno.getValue()));
 			esSocioBandera = true;
 		}
 		
 		if(!(this.d.toLocalDate().equals(this.dtpFechaNacimiento.getValue()))) {
-			System.out.println((this.d.toLocalDate().equals(this.dtpFechaNacimiento.getValue())));
-			System.out.println(!(this.d.toLocalDate().equals(this.dtpFechaNacimiento.getValue())));
 			if(nombreBandera | aPaternoBandera | aMaternoBandera | esSocioBandera) {
 				queryUno += ",";
 			}

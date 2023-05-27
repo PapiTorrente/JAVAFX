@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import fes.aragon.modelo.Destinos;
 import fes.aragon.modelo.ListaDeRegistros;
+import fes.aragon.modelo.TipoError;
 import fes.aragon.recovery.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class ActualizarDestinosController extends BaseController implements Init
 	private Conexion cn = this.conexionSQL();
 	
 	private Destinos d;
+	
+	String mensaje = "";
 	
     @FXML
     private Button btnActualizar;
@@ -34,16 +37,29 @@ public class ActualizarDestinosController extends BaseController implements Init
 
     @FXML
     void actualizarDestinos(ActionEvent event) throws SQLException {
+    	if(this.verificar()) {
     	this.actualizarDestinos();
     	ListaDeRegistros.getObjeto().getGrupoDestinos().set(this.indice, this.d);
     	this.cn.llenarTablaRegistros();
     	BaseController.tablaController.getTblTabla().setItems(ListaDeRegistros.getObjeto().getGrupoRegistros());
     	this.cerrarVentana(this.btnActualizar);
+    	this.tabla = null;
+    	this.indice = -1;
+    	this.nombreValido = true;
+    	this.cn.cerrarConexion();
+    	}else {
+    		this.ventanaEmergente("Error", "Error de guardado", this.mensaje);
+    		this.mensaje = "";
+    	}
     }
 
     @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrarVentana(btnSalir);
+    	this.tabla = null;
+    	this.indice = -1;
+    	this.nombreValido = true;
+    	this.cn.cerrarConexion();
     }
     
     public Conexion conexionSQL() {
@@ -64,6 +80,7 @@ public class ActualizarDestinosController extends BaseController implements Init
 		this.d = ListaDeRegistros.getObjeto().getGrupoDestinos().get(indice);
 		this.txtIDDestino.setText(String.valueOf(d.getNoSerieDestino()));
 		this.txtNombres.setText(d.getPuertoDest());
+		this.verificarEntrada(txtNombres, TipoError.NOMBREDESTINO);
 	}
 	
 	public void actualizarDestinos() throws SQLException {
@@ -84,5 +101,28 @@ public class ActualizarDestinosController extends BaseController implements Init
 		pr.close();
 		}
 	}
+	
+	private boolean verificar() {
+		boolean valido = true;
+
+		if ((this.txtNombres.getText() == null)
+				|| (this.txtNombres.getText() != null && this.txtNombres.getText().isEmpty())) {
+			this.mensaje += "- El nombre del destino no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if (this.txtNombres.getText().length() > 30) {
+			this.mensaje += "- El nombre no es valido, debe tener máximo 30 caracteres.\n";
+			valido = false;
+		}
+		
+		if (!this.nombreValido) {
+			this.mensaje += "- El nombre del destino solo debe contener letras.\n";
+			valido = false;
+		}
+		
+		return valido;
+	}
+
 
 }

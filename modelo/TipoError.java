@@ -1,0 +1,5 @@
+package fes.aragon.modelo;
+
+public enum TipoError {
+	TELEFONO, NOMBRE, APELLIDOPATERNO, APELLIDOMATERNO, NOMBREBARCO,NOAMARRE, NOMBREDESTINO
+}

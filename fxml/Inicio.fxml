@@ -38,7 +38,7 @@
       <Button fx:id="btnSalir" layoutX="1096.0" layoutY="422.0" mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #fb5f5f;" text="Salir" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="1155.0">
         <menus>
-          <Menu fx:id="muAbrir" mnemonicParsing="false" onAction="#abrirMas" text="Abrir">
+          <Menu fx:id="muAbrir" mnemonicParsing="false" onAction="#abrirPags" text="Abrir">
             <items>
               <MenuItem fx:id="muItemBarcos" mnemonicParsing="false" onAction="#abrirBarcos" text="Barcos">
                      <graphic>
@@ -77,18 +77,6 @@
                   </ImageView>
                </graphic>
           </Menu>
-            <Menu fx:id="muMas" mnemonicParsing="false" text="Más">
-               <items>
-                  <MenuItem fx:id="muItemCreditos" mnemonicParsing="false" onAction="#abrirCreditos" text="Créditos" />
-               </items>
-               <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/Más.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Menu>
         </menus>
       </MenuBar>
       <Button fx:id="btnActualizar" layoutX="94.0" layoutY="422.0" mnemonicParsing="false" onAction="#actualizarRegistro" style="-fx-background-color: #ffbf5e;" text="Actualizar" />

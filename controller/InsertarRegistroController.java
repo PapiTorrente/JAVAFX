@@ -28,8 +28,10 @@ public class InsertarRegistroController extends BaseController implements Initia
 	
 	private Conexion cn = this.conexionSQL();
 	
-	 @FXML
-	   private Button btnInsertar;
+	String mensaje = "";
+	
+	@FXML
+	private Button btnInsertar;
 
     @FXML
     private Button btnSalir;
@@ -66,6 +68,7 @@ public class InsertarRegistroController extends BaseController implements Initia
 
     @FXML
     void insertar(ActionEvent event) {
+    	if(this.verificar()) {
     	this.r.setBarco(this.cmbBarco.getValue());
     	this.r.setSocio(this.cmbSocios.getValue());
     	this.r.setPatron(this.cmbPatrones.getValue());
@@ -84,10 +87,16 @@ public class InsertarRegistroController extends BaseController implements Initia
     	this.tabla = null;
     	this.indice = -1;
     	this.cn.cerrarConexion();
+    	}else {
+    		this.ventanaEmergente("Error", "Error de guardado", this.mensaje);
+    		this.mensaje = "";
+    	}
     }
 
     @FXML
     void salir(ActionEvent event) {
+    	ListaDeRegistros.getObjeto().getGrupoRegistros().remove(
+				ListaDeRegistros.getObjeto().getGrupoRegistros().size()-1);
     	this.cerrarVentana(this.btnSalir);
     	this.tabla = null;
     	this.indice = -1;
@@ -128,9 +137,45 @@ public class InsertarRegistroController extends BaseController implements Initia
 			this.sprHoraLlegada.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaHoras));
 			this.sprMinutoLlegada.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaMinutos));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+	}
+	
+	private boolean verificar() {
+		boolean valido = true;
+		String fechaSalida = "";
+		String fechaLlegada = "";
+		
+		if ((this.dtpFechaSalida.getValue() == null)
+				|| (this.dtpFechaSalida.getValue() != null && 
+				String.valueOf(this.dtpFechaSalida.getValue()).equals(""))) {
+			this.mensaje += "- La fecha de salida no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		fechaSalida = String.valueOf(this.dtpFechaSalida.getValue()) + " " 
+					  + this.sprHoraSalida.getValue()+":"+this.sprMinutoSalida.getValue()+":00";
+		
+		if(fechaSalida.equals(BaseController.mapFechasSalida.get(fechaSalida))) {
+			this.mensaje += "- La fecha de salida (" +fechaSalida+ ") ya se asigno \na un barco previamente.\n";
+			valido = false;
+		}
+		
+		if ((this.dtpFechaLlegada.getValue() == null)
+				|| (this.dtpFechaLlegada.getValue() != null && 
+				String.valueOf(this.dtpFechaLlegada.getValue()).equals(""))) {
+			this.mensaje += "- La fecha de llegada no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		fechaLlegada = String.valueOf(this.dtpFechaLlegada.getValue()) + " " 
+				  + this.sprHoraLlegada.getValue()+":"+this.sprMinutoLlegada.getValue()+":00";
+	
+		if(fechaLlegada.equals(BaseController.mapFechasLlegada.get(fechaLlegada))) {
+		this.mensaje += "- La fecha de llegada (" +fechaLlegada+ ") ya se asigno \na un barco previamente.\n";
+			valido = false;
+		}
+		
+		return valido;
 	}
 
 }

@@ -7,11 +7,11 @@ import java.util.ResourceBundle;
 
 import fes.aragon.modelo.Barcos;
 import fes.aragon.modelo.ListaDeRegistros;
+import fes.aragon.modelo.TipoError;
 import fes.aragon.recovery.Conexion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -21,6 +21,8 @@ public class InsertarBarcosController extends BaseController implements Initiali
 	private Barcos b;
 	
 	private Conexion cn = this.conexionSQL();
+	
+	String mensaje = "";
 	
     @FXML
     private Button btnInsertar;
@@ -39,33 +41,22 @@ public class InsertarBarcosController extends BaseController implements Initiali
 
     @FXML
     void cerrarVentana(ActionEvent event) {
+    	ListaDeRegistros.getObjeto().getGrupoBarcos().remove(
+				ListaDeRegistros.getObjeto().getGrupoBarcos().size()-1);
     	this.cerrarVentana(this.btnSalir);
     	this.tabla = null;
     	this.indice = -1;
+    	this.nombreValido = true;
+    	this.noAmarreValido = true;
     	this.cn.cerrarConexion();
     }
 
     @FXML
     void insertarBarco(ActionEvent event) {
-    	if(this.txtNombresDeBarco.getLength() > 2 && this.txtNombresDeBarco.getLength() < 41) {
-        	this.b.setNomBarco(this.txtNombresDeBarco.getText());
-    	} else {
-    		if(this.txtNombresDeBarco.getLength() <= 2) {
-    			Alert alerta=new Alert(Alert.AlertType.ERROR);
-    			alerta.setTitle("¡Cuidado!");
-    			alerta.setHeaderText("Hay un error con la inserción del dato.");
-    			alerta.setContentText("No puedes nombrar así el barco porque el nombre debe ser mayor a dos carácteres.");
-    			alerta.showAndWait();
-    		}
-    		if(this.txtNombresDeBarco.getLength() >= 41) {
-    			Alert alerta=new Alert(Alert.AlertType.ERROR);
-    			alerta.setTitle("¡Cuidado!");
-    			alerta.setHeaderText("Hay un error con la inserción del dato.");
-    			alerta.setContentText("No puedes nombrar así el barco porque el nombre debe ser menor a cuarenta y un carácteres.");
-    			alerta.showAndWait();
-    		}
-    	}
-    	
+    	if(this.verificar()) {
+    	this.b.setNomBarco(this.txtNombresDeBarco.getText());
+    	this.b.setCuota(this.cmbCuota.getValue());
+    	this.b.setNoAgarre(Integer.parseInt(this.txtNumeroAmarre.getText()));
     	try {
 			this.b.setNoSerieBarco(this.cn.insertarBarcos(this.b));
 			ListaDeRegistros.getObjeto().getGrupoBarcos().set(
@@ -75,7 +66,13 @@ public class InsertarBarcosController extends BaseController implements Initiali
     	this.cerrarVentana(this.btnInsertar);
     	this.tabla = null;
     	this.indice = -1;
+    	this.nombreValido = true;
+    	this.noAmarreValido = true;
     	this.cn.cerrarConexion();
+    	}else {
+    		this.ventanaEmergente("Error", "Error de guardado", this.mensaje);
+    		this.mensaje = "";
+    	}
     }
     
     public Conexion conexionSQL() {
@@ -87,14 +84,56 @@ public class InsertarBarcosController extends BaseController implements Initiali
 		}
 		return null;
 	}
+    
+    private boolean verificar() {
+		boolean valido = true;
+
+		if ((this.txtNombresDeBarco.getText() == null)
+				|| (this.txtNombresDeBarco.getText() != null && this.txtNombresDeBarco.getText().isEmpty())) {
+			this.mensaje += "- El nombre no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		if (this.txtNombresDeBarco.getText().length() > 40) {
+			this.mensaje += "- El nombre del barco no es valido, debe tener máximo 40 caracteres.\n";
+			valido = false;
+		}
+		
+		if (!this.nombreValido) {
+			this.mensaje += "- El nombre del barco solo puede contener letras.\n";
+			valido = false;
+		}
+		
+		
+		if((this.cmbCuota.getSelectionModel().getSelectedIndex() == 0) || 
+				(this.cmbCuota.getSelectionModel().getSelectedIndex() == -1)) {
+			this.mensaje += "- Seleccione una opción sobre la cuota del barco.\n";
+			valido = false;
+		}
+		
+		if ((this.txtNumeroAmarre.getText() == null)
+				|| (this.txtNumeroAmarre.getText() != null && this.txtNumeroAmarre.getText().isEmpty())) {
+			this.mensaje += "- El número de amarre no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+
+		if (!this.noAmarreValido) {
+			this.mensaje += "- El número de amarre solo debe contener dígitos numéricos.\n";
+			valido = false;
+		}
+		
+		return valido;
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.b = ListaDeRegistros.getObjeto().getGrupoBarcos().get(
 				ListaDeRegistros.getObjeto().getGrupoBarcos().size()-1);
-		this.cmbCuota.getItems().addAll("$1","$2","$3");
+		this.cmbCuota.getItems().addAll("Selecciona una opción:","$1","$2","$3");
 		this.cmbCuota.getSelectionModel().select(0);
-		
+		this.verificarEntrada(txtNombresDeBarco, TipoError.NOMBREBARCO);
+		this.verificarEntrada(txtNumeroAmarre, TipoError.NOAMARRE);
 	}
 
 }

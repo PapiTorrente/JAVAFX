@@ -33,9 +33,17 @@ public class ActualizarRegistroController extends BaseController implements Init
 	
 	private Registros r;
 	
+	private Destinos d;
+	
 	private Date dUno;
 	
 	private Date dDos;
+	
+	String mensaje = "";
+	String fechaSalidaAnterior = "";
+	String fechaLlegadaAnterior = "";
+	String fechaSalidaActual = "";
+	String fechaLlegadaActual = "";
 	
     @FXML
     private Button btnActualizar;
@@ -75,12 +83,21 @@ public class ActualizarRegistroController extends BaseController implements Init
 
     @FXML
     void actualizar(ActionEvent event) {
+    	if(this.verificar()) {
     	try {
 			this.actualizarRegistro();
-			ListaDeRegistros.getObjeto().getGrupoRegistros().set(indice, r);
+			BaseController.mapFechasSalida.remove(this.fechaSalidaAnterior);
+			BaseController.mapFechasLlegada.remove(this.fechaLlegadaAnterior);
+			BaseController.mapFechasSalida.put(this.fechaSalidaActual, this.fechaSalidaActual);
+			BaseController.mapFechasLlegada.put(this.fechaLlegadaActual, this.fechaLlegadaActual);
+			ListaDeRegistros.getObjeto().getGrupoRegistros().set(this.indice, this.r);
 			this.cerrarVentana(btnActualizar);
 		} catch (SQLException e) {
 		}
+    	}else {
+    		this.ventanaEmergente("Error", "Error de guardado", this.mensaje);
+    		this.mensaje = "";
+    	}
     }
 
     @FXML
@@ -111,7 +128,7 @@ public class ActualizarRegistroController extends BaseController implements Init
 		listaHoras.addAll("00","01","02","03","04","05","06","07","08","09","10","11",
 				"12","13","14","15","16","17","18","19","20","21","22","23");
 		ObservableList<String> listaMinutos = FXCollections.observableArrayList();
-		listaMinutos.addAll("00","05","10","15","20","25","30","35","40","45","50","55"); 
+		listaMinutos.addAll("00","05","10","15","20","25","30","35","40","45","50","55"); //12-13
 		this.dUno = Date.valueOf(this.r.getFechaSalida().substring(0, 10));
 		this.dDos = Date.valueOf(this.r.getFechaLlegada().substring(0, 10));
 		try {
@@ -129,11 +146,57 @@ public class ActualizarRegistroController extends BaseController implements Init
 			this.sprMinutoSalida.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaMinutos));
 			this.sprHoraLlegada.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaHoras));
 			this.sprMinutoLlegada.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<>(listaMinutos));
+			this.sprHoraSalida.getValueFactory().setValue(this.r.getFechaSalida().substring(11,13));
+			this.sprMinutoSalida.getValueFactory().setValue(this.r.getFechaSalida().substring(14,16));
+			this.sprHoraLlegada.getValueFactory().setValue(this.r.getFechaLlegada().substring(11,13));
+			this.sprMinutoLlegada.getValueFactory().setValue(this.r.getFechaLlegada().substring(14,16));
+			this.fechaSalidaAnterior = String.valueOf(this.dtpFechaSalida.getValue()) + " " 
+					  + this.sprHoraSalida.getValue()+":"+this.sprMinutoSalida.getValue()+":00";
+			this.fechaLlegadaAnterior = String.valueOf(this.dtpFechaLlegada.getValue()) + " " 
+					  + this.sprHoraLlegada.getValue()+":"+this.sprMinutoLlegada.getValue()+":00"
+					  + " " + this.cmbDestinos.getValue().getPuertoDest();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
+	}
+	
+	private boolean verificar() {
+		boolean valido = true;
+		
+		if ((this.dtpFechaSalida.getValue() == null)
+				|| (this.dtpFechaSalida.getValue() != null && 
+				String.valueOf(this.dtpFechaSalida.getValue()).equals(""))) {
+			this.mensaje += "- La fecha de salida no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		this.fechaSalidaActual = String.valueOf(this.dtpFechaSalida.getValue()) + " " 
+					  + this.sprHoraSalida.getValue()+":"+this.sprMinutoSalida.getValue()+":00";
+		if(BaseController.mapFechasSalida.get(this.fechaSalidaActual) != null & 
+				!(this.fechaSalidaAnterior.equals(BaseController.mapFechasSalida.get(this.fechaSalidaActual)))) {
+			this.mensaje += "- La fecha de salida (" +this.fechaSalidaActual+ ") ya se asigno \na un registro previo.\n";
+			valido = false;
+		}
+		
+		if ((this.dtpFechaLlegada.getValue() == null)
+				|| (this.dtpFechaLlegada.getValue() != null && 
+				String.valueOf(this.dtpFechaLlegada.getValue()).equals(""))) {
+			this.mensaje += "- La fecha de llegada no es valido, es vacio.\n";
+			valido = false;
+		}
+		
+		this.fechaLlegadaActual = String.valueOf(this.dtpFechaLlegada.getValue()) + " " 
+				  + this.sprHoraLlegada.getValue()+":"+this.sprMinutoLlegada.getValue()+":00"
+				  + " " + this.cmbDestinos.getValue().getPuertoDest();
+		
+		if(BaseController.mapFechasLlegada.get(this.fechaLlegadaActual) != null & 
+				!(this.fechaLlegadaAnterior.equals(BaseController.mapFechasLlegada.get(this.fechaLlegadaActual)))) {
+			this.mensaje += "- La fecha de salida (" +this.fechaLlegadaActual.substring(0, 19)+ ") "
+					+ "con destino ("+ this.fechaLlegadaActual.substring(20)+") ya se asigno"
+					+ " a un registro previo.\n";
+			valido = false;
+		}
+		return valido;
 	}
 	
 	public void actualizarRegistro() throws SQLException {
@@ -144,7 +207,7 @@ public class ActualizarRegistroController extends BaseController implements Init
 		String llegada = "llegada";
 		String idPuertoRegistros = "id_puertoREGISTROS";
 		String queryUno = "update registros set ";
-		String queryDos = " where llegada='" + this.r.getFechaLlegada() + "' ";
+		String queryDos = " where salida='" + this.r.getFechaSalida() + "' ";
 		boolean noSerieBarcosRegistroBandera = false;
 		boolean matriculaSocioRBandera = false;
 		boolean matriculaPatronRBandera = false;
@@ -194,7 +257,7 @@ public class ActualizarRegistroController extends BaseController implements Init
 			if(noSerieBarcosRegistroBandera | matriculaSocioRBandera | matriculaPatronRBandera | salidaBandera) {
 				queryUno += ",";
 			}
-			queryUno = queryUno + salida + "='" + fechaEvaluacionLlegada + "'";
+			queryUno = queryUno + llegada + "='" + fechaEvaluacionLlegada + "'";
 			this.r.setFechaLlegada(fechaEvaluacionLlegada);
 			llegadaBandera = true;
 		}
