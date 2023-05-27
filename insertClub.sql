@@ -1,19 +1,54 @@
 INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Benito Antonio', 'Martinez', 'Ocasio','2002-04-10','5555105520');
 INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Julieta', 'Venegas', 'Percevault','2002-04-10','5555105520');
-INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Jamie Cristopher', 'Hewlet', 'Pollo','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Jamie', 'Cristopher', 'Hewlet','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Stuart', 'Harold', 'Pot','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Gustavo', 'Adrian', 'Cerati','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Hector Pedro', 'Juan', 'Bosio','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Carlos', 'Alberto', 'Ficchia','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Leon Ruben', 'Larregui', 'Marin','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Sergio Eduardo', 'Acosta', 'Russek','2002-04-10','5555105520');
+INSERT INTO socios(nombres_socio, ap_paterno_socio, ap_materno_socio, fecha_nacimiento_socio, no_celular_socio) VALUE ('Jorge Siddhartha', 'Gonzalez', 'Ibarra','2002-04-10','5555105520');
 
-INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Kevin Eduardo', 'Hernández', 'Carlos','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Kevin Eduardo', 'Hernandez', 'Carlos','0001-01-01','6543129072');
 INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Samuel', 'Frederick', 'Smith','0001-01-01','6543129072');
 INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Shakira Isabel', 'Mebarak', 'Ripoll','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Miley', 'Ray', 'Cyrus','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Andrea', 'Dre', 'Babinki','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Saul Alfonso', 'Hernandez', 'Estrada','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Gonzalo', 'Julian', 'Conde','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Elian', 'Angel', 'Valenzuela','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Tyler', 'Robert', 'Joseph','0001-01-01','6543129072');
+INSERT INTO patrones(nombres_patron, ap_paterno_patron, ap_materno_patron, fecha_nacimiento_patron, no_celular_patron) VALUE ('Joshua', 'William', 'Dun','0001-01-01','6543129072');
 
 INSERT INTO destinos(puerto_dest) VALUE ('Veracruz');
 INSERT INTO destinos(puerto_dest) VALUE ('Hong Kong');
 INSERT INTO destinos(puerto_dest) VALUE ('Ibiza');
+INSERT INTO destinos(puerto_dest) VALUE ('Los Cabos');
+INSERT INTO destinos(puerto_dest) VALUE ('Panama');
+INSERT INTO destinos(puerto_dest) VALUE ('Cerna');
+INSERT INTO destinos(puerto_dest) VALUE ('Madagascar');
+INSERT INTO destinos(puerto_dest) VALUE ('El Infierno');
+INSERT INTO destinos(puerto_dest) VALUE ('Estrecho de Bering');
+INSERT INTO destinos(puerto_dest) VALUE ('Lizboa');
 
 INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Chonita','$1','123');
 INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Frida','$2','123');
 INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Patricia','$3','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Paola','$1','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Araceli','$2','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Perla','$3','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Amatista','$1','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Maria','$2','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Avion','$2','123');
+INSERT INTO barcos(nom_barco, cuota, no_amarre) VALUE ('Barco Uno','$1','123');
 
 INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('1','1', '1','2023-03-01 12:23:54','2023-04-01 12:23:54','1');
-INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('2','2', '2','2023-03-01 12:23:54','2023-04-01 12:23:54','2');
-INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('3','3', '3','2023-03-01 12:23:54','2023-04-01 12:23:54','3');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('2','2', '1','2023-03-01 12:23:54','2023-04-01 12:23:54','2');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('3','3', '2','2023-03-01 12:23:54','2023-04-01 12:23:54','3');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('4','8', '10','2023-03-01 12:23:54','2023-04-01 12:23:54','4');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('5','8', '7','2023-03-01 12:23:54','2023-04-01 12:23:54','5');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('6','5', '7','2023-03-01 12:23:54','2023-04-01 12:23:54','6');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('7','10', '4','2023-03-01 12:23:54','2023-04-01 12:23:54','7');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('8','9', '7','2023-03-01 12:23:54','2023-04-01 12:23:54','8');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('9','3', '5','2023-03-01 12:23:54','2023-04-01 12:23:54','9');
+INSERT INTO registros(no_serie_barcoREGISTROS,matricula_socioR, matricula_patronR, salida, llegada,id_puertoREGISTROS) VALUE ('10','10', '10','2023-03-01 12:23:54','2023-04-01 12:23:54','10');

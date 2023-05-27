@@ -46,6 +46,10 @@ CONSTRAINT maximo_20_caract_appp CHECK (CHAR_LENGTH(ap_paterno_patron)<21),
 CONSTRAINT minimo_3_caract_apmp CHECK (CHAR_LENGTH(ap_materno_patron)>2),
 CONSTRAINT maximo_420_caract_apmp CHECK (CHAR_LENGTH(ap_materno_patron)<21),
 
+/*CONSTRAINT solo_numeros CHECK (^[0-9]),*/
+CONSTRAINT minimo_10_num CHECK (CHAR_LENGTH(no_celular_patron)>9),
+CONSTRAINT maximo_10num CHECK (CHAR_LENGTH(no_celular_patron)<11),
+
 PRIMARY KEY(matricula_patron)
 )DEFAULT CHARACTER SET utf8;
 

@@ -14,7 +14,7 @@
          <font>
             <Font name="System Bold" size="25.0" />
          </font></Label>
-      <TableView fx:id="tblTabla" layoutX="27.0" layoutY="109.0" prefHeight="200.0" prefWidth="1003.0">
+      <TableView fx:id="tblTabla" layoutX="27.0" layoutY="109.0" prefHeight="216.0" prefWidth="1003.0">
         <columns>
           <TableColumn fx:id="clmIDPatron" prefWidth="75.0" text="ID Patron" />
           <TableColumn fx:id="clmNombres" prefWidth="211.19996643066406" text="Nombres" />

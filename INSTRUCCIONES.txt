@@ -1,0 +1,6 @@
+~ 27 de mayo del 2023 ~
+Para inicializar la base de datos sólo se requiere dar el comando "source Club_Nautico.sql" a la consola.
+
+Este archivo (Club_Nautico.sql) ya cuenta con el comando incluido para cargar los datos en sí misma.
+
+Se adjunta el diagrama relacional de la base de datos.
