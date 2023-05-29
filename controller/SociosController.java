@@ -62,17 +62,6 @@ public class SociosController extends BaseController implements Initializable{
     private Button btnSalir;
     
     @FXML
-    private Button btnEliminar;
-    
-    @FXML
-    void eliminarSocio(ActionEvent event) {
-    	int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
-    	if(indice >= 0){
-    	ListaDeRegistros.getObjeto().getGrupoSocios().remove(indice);
-    	}
-    }
-    
-    @FXML
     void actualizarSocio(ActionEvent event) {
     	int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
     	if(indice >= 0) {

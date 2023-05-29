@@ -24,6 +24,5 @@
       <Button fx:id="btnInsertar" layoutX="73.0" layoutY="348.0" mnemonicParsing="false" onAction="#insertarDestino" style="-fx-background-color: #5ccd5c;" text="Insertar" />
       <Button fx:id="btnActualizar" layoutX="161.0" layoutY="348.0" mnemonicParsing="false" onAction="#actualizarDestino" style="-fx-background-color: #ffbf5e;" text="Actualizar" />
       <TextField fx:id="txtPatron" layoutX="135.0" layoutY="56.0" prefHeight="25.0" prefWidth="288.0" />
-      <Button fx:id="btnEliminar" layoutX="261.0" layoutY="348.0" mnemonicParsing="false" onAction="#eliminarDestino" style="-fx-background-color: #fb5f5f;" text="Eliminar" />
    </children>
 </Pane>

@@ -30,9 +30,6 @@ public class DestinosController extends BaseController implements Initializable{
     private Button btnActualizar;
 
     @FXML
-    private Button btnEliminar;
-
-    @FXML
     private Button btnInsertar;
 
     @FXML
@@ -63,14 +60,6 @@ public class DestinosController extends BaseController implements Initializable{
     @FXML
     void cerrarVentana(ActionEvent event) {
     	this.cerrarVentana(btnSalir);
-    }
-
-    @FXML
-    void eliminarDestino(ActionEvent event) {
-    	int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
-    	if(indice >= 0){
-    	ListaDeRegistros.getObjeto().getGrupoDestinos().remove(indice);
-    	}
     }
 
     @FXML

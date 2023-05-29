@@ -64,17 +64,6 @@ public class PatronesController extends BaseController implements Initializable{
     private Button btnSalir;
     
     @FXML
-    private Button btnEliminar;
-    
-    @FXML
-    void eliminarPatron(ActionEvent event) {
-    	int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
-    	if(indice >= 0){
-    	ListaDeRegistros.getObjeto().getGrupoPatrones().remove(indice);
-    	}
-    }
-    
-    @FXML
     void actualizarPatron(ActionEvent event) {
     	int indice = this.tblTabla.getSelectionModel().getSelectedIndex();
     	if(indice >= 0) {
